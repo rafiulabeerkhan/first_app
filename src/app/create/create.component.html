@@ -1,0 +1,89 @@
+<app-main-navbar></app-main-navbar>
+<h2>Adding Data to DBJSON</h2>
+<div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!! </strong> DATA Added
+  <button (click)="removeMessage()" type="button" data-bs-dismiss="alert" aria-label="Close">x</button>
+</div>
+<form [formGroup]="addStudent" (ngSubmit)="saveData()">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input *ngIf="!editData" type="email" formControlName="inputEmail" class="form-control" id="exampleInputEmail1"
+      aria-describedby="emailHelp" placeholder="Enter email">
+
+
+
+    <input type="email" *ngIf="editData" readonly formControlName="inputEmail" class="form-control"
+      id="exampleInputEmail9" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword2">Password</label>
+    <input type="password" formControlName="InputPassword" class="form-control" id="exampleInputPassword2"
+      placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword3">Present Address</label>
+    <input formControlName="inputAddress" type="text" class="form-control" id="exampleInputPassword3"
+      placeholder="Preset Address">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword4">Permanent Address</label>
+    <input formControlName="inputAddress2" type="text" class="form-control" id="exampleInputPassword4"
+      placeholder="Permanent Address">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword00">Product Name</label>
+    <input formControlName="inputCity" type="text" class="form-control" id="exampleInputPassword00" placeholder="Product Name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword5"></label>
+    <input formControlName="inputZip" type="text" class="form-control" id="exampleInputPassword5"
+      placeholder="Quantity">
+  </div>
+  <div class="form-check">
+    <input type="checkbox" formControlName="gridCheck" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-outline-success">Submit</button>
+</form>
+
+<br> <br> <br>
+<div>
+
+  <table class="table">
+
+    <!-- <tr>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Present Address</th>
+      <th>Permanent Address</th>
+      <th>City</th>
+      <th>Zip</th>
+      <th>Check</th>
+    </tr> -->
+    <tr *ngFor="let user of userList">
+      <td>{{user.inputEmail}}</td>
+      <td>{{user.InputPassword}}</td>
+      <td>{{user.inputAddress}}</td>
+      <td>{{user.inputAddress2}}</td>
+      <td>{{user.inputCity}}</td>
+      <td>{{user.inputCity}}</td>
+      <td *ngIf="user.gridCheck">Yes</td>
+      <td *ngIf="!user.gridCheck">No</td>
+      <td>
+
+        <a class="btn btn-primary" (click)="edit(user)">Edit</a> &nbsp;
+        <button type="button" class="btn btn-danger" (click)="delete(user)">Delete</button>
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+<!-- <br> <br> <br>
+{{addStudent.value.inputEmail}}
+User List Size: {{userList.length}} -->
+

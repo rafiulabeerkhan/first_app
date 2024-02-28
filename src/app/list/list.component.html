@@ -1,0 +1,39 @@
+<app-main-navbar></app-main-navbar>
+<h3 style="color:black; border-radius:5rem;" class="text-center"><b>Lists</b></h3>
+
+<table class="table table bg-dark border">
+    <thead class="thead-dark">
+        <tr class="table-hover">
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Present Address</th>
+            <th scope="col">Permamenet Address</th>
+            <th scope="col"><b>Product Name</b></th>
+            <th scope="col"> <b>Quantity</b></th>
+            <th scope="col">Check</th>
+            <th scope="col">Action</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of studentData">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.inputEmail}}</td>
+            <td>{{item.InputPassword}}</td>
+            <td>{{item.inputAddress}}</td>
+            <td>{{item.inputAddress2}}</td>
+            <td> <b>{{item.inputCity}}</b></td>
+            <td> <b>{{item.inputZip}}</b></td>
+            <td>{{item.inputCheck}}</td>
+            <td>
+                <i (click)="deleteStudent(item.id)" class="fa fa-trash"></i>
+                &nbsp;
+                <a routerLink="/edit/{{item.id}}"><i class="fa fa-edit"></i> </a>
+            </td>
+
+
+        </tr>
+    </tbody>
+</table>
